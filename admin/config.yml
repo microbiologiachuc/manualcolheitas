@@ -1,9 +1,11 @@
+
 backend:
   name: github
   repo: microbiologiachuc/manualcolheitas
   branch: main
-  auth_scope: repo
-  open_authoring: false
+  base_url: https://acessoeditores.netlify.app/callback
+  auth_endpoint: auth
+
 
 media_folder: "uploads"
 public_folder: "/uploads"
