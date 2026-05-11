@@ -3,7 +3,7 @@ backend:
   name: github
   repo: microbiologiachuc/manualcolheitas
   branch: main
-  base_url: https://acessoeditores.netlify.app/callback
+  base_url: https://acessoeditores.netlify.app
   auth_endpoint: auth
 
 
