@@ -1,1 +1,31 @@
-teste
+backend:
+  name: github
+  repo: microbiologiachuc/manualcolheitas
+  branch: main
+  auth_scope: repo
+  open_authoring: false
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+site_url: "https://microbiologiachuc.github.io/manualcolheitas"
+display_url: "https://microbiologiachuc.github.io/manualcolheitas"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "items"
+    label: "Itens"
+    label_singular: "Item"
+    folder: "items"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descrição", name: "description", widget: "text" }
+      - { label: "Imagem", name: "image", widget: "image", allow_multiple: false }
+      - { label: "Categoria", name: "category", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
