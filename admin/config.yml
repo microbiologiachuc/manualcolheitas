@@ -56,3 +56,38 @@ collections:
       - label: "Observações importantes"
         name: "observacoes"
         widget: "text"
+
+  - name: "paginas"
+    label: "Páginas"
+    files:
+      - file: "content/paginas/inicio.md"
+        label: "Página inicial"
+        name: "inicio"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição curta", name: "description", widget: "text", required: false }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+      - file: "content/paginas/sobre.md"
+        label: "Sobre o serviço"
+        name: "sobre"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição curta", name: "description", widget: "text", required: false }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+      - file: "content/paginas/utentes.md"
+        label: "Informações a utentes"
+        name: "utentes"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição curta", name: "description", widget: "text", required: false }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+      - file: "content/paginas/contactos.md"
+        label: "Contactos"
+        name: "contactos"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição curta", name: "description", widget: "text", required: false }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
