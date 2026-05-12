@@ -11,18 +11,48 @@ display_url: "https://acessoeditores.netlify.app"
 publish_mode: editorial_workflow
 
 collections:
-  - name: "items"
-    label: "Itens"
-    label_singular: "Item"
-    folder: "items"
+  - name: "testes"
+    label: "Testes"
+    label_singular: "Teste"
+    folder: "content/testes"
     create: true
     slug: "{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: "Título", name: "title", widget: "string" }
-      - { label: "Descrição", name: "description", widget: "text" }
-      - { label: "Imagem", name: "image", widget: "image", allow_multiple: false }
-      - { label: "Categoria", name: "category", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list", default: [] }
-      - { label: "Conteúdo", name: "body", widget: "markdown" }
+      - label: "Nome do teste"
+        name: "title"
+        widget: "string"
+
+      - label: "Área"
+        name: "area"
+        widget: "select"
+        options:
+          - "Hematologia"
+          - "Imunologia / Autoimunidade"
+          - "Microbiologia"
+          - "Química Clínica"
+
+      - label: "Descrição clínica"
+        name: "descricao_clinica"
+        widget: "text"
+
+      - label: "Indicação / quando solicitar"
+        name: "indicacao"
+        widget: "text"
+
+      - label: "Tipo de amostra"
+        name: "tipo_amostra"
+        widget: "string"
+
+      - label: "Método"
+        name: "metodo"
+        widget: "string"
+
+      - label: "Tempo de resposta"
+        name: "tempo_resposta"
+        widget: "string"
+
+      - label: "Observações importantes"
+        name: "observacoes"
+        widget: "text"
