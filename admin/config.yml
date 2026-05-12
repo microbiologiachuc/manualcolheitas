@@ -8,7 +8,7 @@ public_folder: "/uploads"
 site_url: "https://acessoeditores.netlify.app"
 display_url: "https://acessoeditores.netlify.app"
 
-publish_mode: editorial_workflow
+publish_mode: simple
 
 collections:
   - name: "testes"
