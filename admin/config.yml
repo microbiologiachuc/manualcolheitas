@@ -5,8 +5,8 @@ backend:
 media_folder: "uploads"
 public_folder: "/uploads"
 
-site_url: "https://microbiologiachuc.github.io/manualcolheitas"
-display_url: "https://microbiologiachuc.github.io/manualcolheitas"
+site_url: "https://acessoeditores.netlify.app"
+display_url: "https://acessoeditores.netlify.app"
 
 publish_mode: editorial_workflow
 
