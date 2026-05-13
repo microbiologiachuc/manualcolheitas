@@ -21,13 +21,8 @@
       --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -42,9 +37,7 @@
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    a:hover { text-decoration: underline; }
 
     .container {
       width: 100%;
@@ -53,7 +46,6 @@
       padding: 0 20px;
     }
 
-    /* Header */
     .site-header {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -68,6 +60,7 @@
       justify-content: space-between;
       gap: 20px;
       min-height: 76px;
+      padding: 10px 0;
     }
 
     .brand {
@@ -138,7 +131,6 @@
       text-decoration: none;
     }
 
-    /* Hero */
     .hero {
       padding: 48px 0 28px;
       background: linear-gradient(180deg, #eef4fa 0%, var(--bg) 100%);
@@ -186,16 +178,26 @@
       color: var(--muted);
     }
 
-    /* Search block */
-    .search-section {
-      padding: 34px 0 14px;
+    .search-section,
+    .featured-section,
+    .az-section,
+    .institutional-section {
+      padding: 26px 0 10px;
     }
 
-    .search-card {
+    .search-card,
+    .featured-card,
+    .az-card,
+    .info-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+    }
+
+    .search-card,
+    .featured-card,
+    .az-card {
       padding: 24px;
     }
 
@@ -243,13 +245,15 @@
       background: var(--primary-dark);
     }
 
-    .quick-links {
+    .quick-links,
+    .featured-links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    .quick-links a {
+    .quick-links a,
+    .featured-links a {
       display: inline-block;
       padding: 9px 12px;
       border: 1px solid var(--border);
@@ -259,23 +263,11 @@
       font-weight: 600;
     }
 
-    .quick-links a:hover {
+    .quick-links a:hover,
+    .featured-links a:hover {
       border-color: var(--primary);
       text-decoration: none;
       background: #f2f7fc;
-    }
-
-    /* AZ */
-    .az-section {
-      padding: 18px 0 10px;
-    }
-
-    .az-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 24px;
     }
 
     .az-grid {
@@ -325,11 +317,6 @@
       text-decoration: none;
     }
 
-    /* Institutional */
-    .institutional-section {
-      padding: 26px 0 42px;
-    }
-
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -337,10 +324,6 @@
     }
 
     .info-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
       padding: 22px;
       display: flex;
       flex-direction: column;
@@ -364,12 +347,11 @@
       color: var(--primary);
     }
 
-    /* Footer */
     .site-footer {
       background: var(--white);
       border-top: 1px solid var(--border);
       padding: 24px 0;
-      margin-top: 10px;
+      margin-top: 18px;
     }
 
     .footer-inner {
@@ -401,7 +383,6 @@
       gap: 6px;
     }
 
-    /* Responsive */
     @media (max-width: 980px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -449,17 +430,18 @@
       <a class="brand" href="/" aria-label="Ir para a página inicial">
         <div class="logo" aria-hidden="true">MC</div>
         <div class="brand-text">
-          <p class="brand-title">Serviço de Patologia Clínica</p>
-          <p class="brand-subtitle">ULS de Coimbra</p>
+          <p class="brand-title">Manual de Colheitas</p>
+          <p class="brand-subtitle">Serviço de Microbiologia do CHUC</p>
         </div>
       </a>
 
       <nav class="main-nav" aria-label="Navegação principal">
         <a href="/">Início</a>
         <a href="/catalogo.html">Testes</a>
+        <a href="/sobre.html">Sobre</a>
         <a href="/utentes.html">Informações</a>
         <a href="/contactos.html">Contactos</a>
-        <a class="editor-link" href="/admin">Área de editores</a>
+        <a href="/admin/" class="editor-link">Área de editores</a>
       </nav>
     </div>
   </header>
@@ -467,14 +449,15 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <h1>Manual de Colheitas</h1>
+        <h1>Catálogo de testes laboratoriais</h1>
         <p>
-          Aceda a orientações institucionais e encontre informação técnica essencial.
+          Consulte o catálogo de testes, aceda ao detalhe de cada exame e encontre informação institucional útil para utentes e profissionais.
+        </p>
+        <p>
+          Pode pesquisar diretamente por nome do teste, navegar pelo catálogo A–Z ou explorar páginas informativas do serviço.
         </p>
       </div>
 
-      
-    <!-- 
       <aside class="hero-card" aria-label="Áreas laboratoriais">
         <h2>Áreas do catálogo</h2>
         <ul>
@@ -484,8 +467,6 @@
           <li>Química Clínica</li>
         </ul>
       </aside>
-     -->
-      
     </div>
   </section>
 
@@ -495,11 +476,11 @@
         <div class="search-card">
           <h2 class="section-title">Pesquisar testes</h2>
           <p class="section-subtitle">
-            Introduza o nome do teste que deseja pesquisar.
+            Introduza o nome do teste e avance para a página do catálogo. A pesquisa será aplicada em <strong>catalogo.html</strong>.
           </p>
 
-          <form class="search-form" action="/catalogo.html" method="get" role="search" aria-label="Pesquisar testes">
-            <label for="q" class="sr-only" style="position:absolute;left:-9999px;">Pesquisar teste</label>
+          <form class="search-form" action="/catalogo.html" method="get" role="search">
+            <label for="q" style="position:absolute;left:-9999px;">Pesquisar teste</label>
             <input
               type="search"
               id="q"
@@ -512,9 +493,26 @@
 
           <div class="quick-links" aria-label="Acessos rápidos por área">
             <a href="/catalogo.html?area=Hematologia">Hematologia</a>
-            <a href="/catalogo.html?area=Imunologia%20/%20Autoimunidade">Imunologia / Autoimunidade</a>
+            <a href="/catalogo.html?area=Imunologia%20%2F%20Autoimunidade">Imunologia / Autoimunidade</a>
             <a href="/catalogo.html?area=Microbiologia">Microbiologia</a>
             <a href="/catalogo.html?area=Qu%C3%ADmica%20Cl%C3%ADnica">Química Clínica</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-section">
+      <div class="container">
+        <div class="featured-card">
+          <h2 class="section-title">Acesso rápido a testes de exemplo</h2>
+          <p class="section-subtitle">
+            Ligações diretas para páginas individuais já alinhadas com o ficheiro <strong>teste.html</strong>.
+          </p>
+
+          <div class="featured-links" aria-label="Testes de exemplo">
+            <a href="/teste.html?slug=hemograma">Hemograma</a>
+            <a href="/teste.html?slug=hemocultura">Hemocultura</a>
+            <a href="/teste.html?slug=proteina-c-reativa">Proteína C Reativa</a>
           </div>
         </div>
       </div>
@@ -523,9 +521,9 @@
     <section class="az-section" aria-labelledby="titulo-az">
       <div class="container">
         <div class="az-card">
-          <h2 class="section-title" id="titulo-az">Testes de A-Z</h2>
+          <h2 class="section-title" id="titulo-az">Browse tests A–Z</h2>
           <p class="section-subtitle">
-            Explore por ordem alfabética.
+            Explore o catálogo completo por ordem alfabética.
           </p>
 
           <div class="az-grid" aria-label="Navegação alfabética">
@@ -568,7 +566,7 @@
       <div class="container">
         <h2 class="section-title" id="titulo-institucional">Informação institucional</h2>
         <p class="section-subtitle">
-          Aceda rapidamente a conteúdos gerais sobre o serviço, orientações úteis e contactos.
+          Blocos de acesso às páginas estáticas do serviço. Estes links assumem que vais ter as páginas <strong>sobre.html</strong>, <strong>utentes.html</strong> e <strong>contactos.html</strong> na raiz do site.
         </p>
 
         <div class="cards-grid">
@@ -610,6 +608,7 @@
       <div class="footer-block footer-links">
         <a href="/">Início</a>
         <a href="/catalogo.html">Testes</a>
+        <a href="/sobre.html">Sobre</a>
         <a href="/utentes.html">Informações</a>
         <a href="/contactos.html">Contactos</a>
       </div>
@@ -623,9 +622,6 @@
     </div>
   </footer>
 
-  <!-- Netlify Identity widget:
-       necessário para convites, confirmação de conta e recuperação de password
-       quando os links chegam ao domínio do site -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
     if (window.netlifyIdentity) {
