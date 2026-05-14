@@ -59,6 +59,12 @@ collections:
 
   - name: "paginas"
     label: "Páginas"
+    label_singular: "paginas"
+    folder: "content/paginas"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
     files:
       - file: "content/paginas/inicio.md"
         label: "Página inicial"
