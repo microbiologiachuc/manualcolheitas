@@ -61,7 +61,6 @@
       overflow: hidden;
     }
 
-    /* Header */
     .site-header {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -147,7 +146,6 @@
       text-decoration: none;
     }
 
-    /* Intro */
     .page-hero {
       padding: 36px 0 22px;
       background: linear-gradient(180deg, #eef4fa 0%, var(--bg) 100%);
@@ -178,7 +176,6 @@
       font-size: 1rem;
     }
 
-    /* Search/filter block */
     .controls-section {
       padding: 28px 0 16px;
     }
@@ -290,7 +287,6 @@
       border-top: 1px solid var(--border);
     }
 
-    /* Results summary */
     .summary-section {
       padding: 8px 0 8px;
     }
@@ -305,7 +301,6 @@
       font-size: 0.98rem;
     }
 
-    /* Results */
     .results-section {
       padding: 10px 0 42px;
     }
@@ -394,7 +389,6 @@
       font-size: 0.95rem;
     }
 
-    /* Footer */
     .site-footer {
       background: var(--white);
       border-top: 1px solid var(--border);
@@ -458,10 +452,9 @@
   </style>
 </head>
 <body>
-
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="/" class="brand" aria-label="Ir para a página inicial">
+      /" class="brand" aria-label="Ir para a página inicial">
         <div class="logo" aria-hidden="true">MC</div>
         <div class="brand-text">
           <p class="brand-title">Manual de Colheitas</p>
@@ -470,11 +463,11 @@
       </a>
 
       <nav class="main-nav" aria-label="Navegação principal">
-        <a href="/">Início</a>
-        <a href="/catalogo.html">Testes</a>
-        <a href="/utentes.html">Informações</a>
-        <a href="/contactos.html">Contactos</a>
-        <a class="editor-link" href="/admin/">Área de editores</a>
+        /">Início</a>
+        /catalogo.html">Testes</a>
+        /pagina.html?slug=utentes">Informações</a>
+        /pagina.html?slug=contactos">Contactos</a>
+        /admin/" class="editor-link">Área de editores</a>
       </nav>
     </div>
   </header>
@@ -482,7 +475,7 @@
   <section class="page-hero">
     <div class="container">
       <div class="breadcrumbs">
-        <a href="/">Início</a> &gt; <span>Catálogo A–Z</span>
+        /">Início</a> &gt; <span>Catálogo A–Z</span>
       </div>
 
       <h1 class="page-title">Catálogo de Testes — A a Z</h1>
@@ -506,21 +499,17 @@
               aria-label="Pesquisar por nome do teste"
             />
             <button type="submit">Pesquisar</button>
-            <a href="/catalogo.html" class="clear-link">Limpar filtros</a>
+            /catalogo.html" class="clear-link">Limpar filtros</a>
           </form>
 
           <div>
             <p class="filter-title">Filtrar por área</p>
-            <div class="area-filters" id="areaFilters">
-              <!-- preenchido por JS -->
-            </div>
+            <div class="area-filters" id="areaFilters"></div>
           </div>
 
           <div class="az-wrapper">
             <p class="filter-title">Navegação alfabética</p>
-            <div class="az-grid" id="azNav">
-              <!-- preenchido por JS -->
-            </div>
+            <div class="az-grid" id="azNav"></div>
           </div>
 
           <div id="catalogError" class="error-box" style="display:none;"></div>
@@ -555,16 +544,16 @@
       </div>
 
       <div class="footer-block footer-links">
-        <a href="/">Início</a>
-        <a href="/catalogo.html">Testes</a>
-        <a href="/utentes.html">Informações</a>
-        <a href="/contactos.html">Contactos</a>
+        /">Início</a>
+        /catalogo.html">Testes</a>
+        /pagina.html?slug=utentes">Informações</a>
+        /pagina.html?slug=contactos">Contactos</a>
       </div>
 
       <div class="footer-block">
         <h3 class="footer-title">Acesso de editores</h3>
         <p class="footer-text">
-          <a href="/admin/">Entrar no Decap CMS</a>
+          /admin/">Entrar no Decap CMS</a>
         </p>
       </div>
     </div>
@@ -578,7 +567,9 @@
       "Hematologia",
       "Imunologia / Autoimunidade",
       "Microbiologia",
-      "Química Clínica"
+      "Química Clínica",
+      "Citometria de Fluxo",
+      "Farmacocinética Avançada"
     ];
 
     const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -655,6 +646,7 @@
 
         button.addEventListener("click", () => {
           activeArea = area;
+          activeLetter = "";
           updateUrl();
           renderAll();
         });
@@ -678,7 +670,7 @@
           a.style.opacity = "0.45";
         }
 
-        a.addEventListener("click", (event) => {
+        a.addEventListener("click", event => {
           event.preventDefault();
           activeLetter = letter;
           updateUrl();
@@ -851,7 +843,7 @@
       }
     }
 
-    elements.searchForm.addEventListener("submit", (event) => {
+    elements.searchForm.addEventListener("submit", event => {
       event.preventDefault();
       activeQuery = elements.searchInput.value || "";
       activeLetter = "";
