@@ -32,25 +32,35 @@ collections:
           - "Imunologia / Autoimunidade"
           - "Microbiologia"
           - "Química Clínica"
-
-      - label: "Descrição clínica"
-        name: "descricao_clinica"
-        widget: "text"
-
-      - label: "Indicação / quando solicitar"
-        name: "indicacao"
-        widget: "text"
-
-      - label: "Tipo de amostra"
-        name: "tipo_amostra"
-        widget: "string"
+          - "Citometria de Fluxo"
+          - "Farmacocinética Avançada"
 
       - label: "Método"
         name: "metodo"
         widget: "string"
 
+      - label: "Amostra"
+        name: "amostra"
+        widget: "string"
+
+      - label: "Material de Colheita"
+        name: "material_colheita"
+        widget: "string"
+
+      - label: "Descrição clínica"
+        name: "descricao_clinica"
+        widget: "text"
+
+      - label: "Transporte/Estabilidade"
+        name: "transporte_estabilidade"
+        widget: "text"
+
       - label: "Tempo de resposta"
         name: "tempo_resposta"
+        widget: "string"
+
+      - label: "Setor"
+        name: "setor"
         widget: "string"
 
       - label: "Observações importantes"
