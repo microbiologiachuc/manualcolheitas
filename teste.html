@@ -243,6 +243,7 @@
     .tech-value {
       color: var(--primary-dark);
       font-weight: 700;
+      white-space: pre-wrap;
     }
 
     .nav-links {
@@ -276,17 +277,6 @@
     .message-card h2 {
       margin-top: 0;
       color: var(--primary-dark);
-    }
-
-    .error-box {
-      margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 10px;
-      border: 1px solid #f3c6c6;
-      background: #fff5f5;
-      color: #7a1f1f;
-      font-size: 0.95rem;
-      white-space: normal;
     }
 
     .site-footer {
@@ -351,7 +341,6 @@
   </style>
 </head>
 <body>
-
   <header class="site-header">
     <div class="container site-header-inner">
       <a class="brand" href="/" aria-label="Ir para a página inicial">
@@ -365,8 +354,8 @@
       <nav class="main-nav" aria-label="Navegação principal">
         <a href="/">Início</a>
         <a href="/catalogo.html">Testes</a>
-        <a href="/utentes.html">Informações</a>
-        <a href="/contactos.html">Contactos</a>
+        <a href="/pagina.html?slug=utentes">Informações</a>
+        <a href="/pagina.html?slug=contactos">Contactos</a>
         <a href="/admin/" class="editor-link">Área de editores</a>
       </nav>
     </div>
@@ -386,7 +375,7 @@
   <main>
     <section class="content-section">
       <div class="container" id="pageContainer">
-        <div class="message-card" id="loadingCard">
+        <div class="message-card">
           <h2>A carregar informação do teste</h2>
           <p>Aguarde um momento enquanto o conteúdo é apresentado.</p>
         </div>
@@ -404,8 +393,8 @@
       <div class="footer-block footer-links">
         <a href="/">Início</a>
         <a href="/catalogo.html">Testes</a>
-        <a href="/utentes.html">Informações</a>
-        <a href="/contactos.html">Contactos</a>
+        <a href="/pagina.html?slug=utentes">Informações</a>
+        <a href="/pagina.html?slug=contactos">Contactos</a>
       </div>
 
       <div class="footer-block">
@@ -420,37 +409,36 @@
   <script>
     function getSlugFromUrl() {
       const params = new URLSearchParams(window.location.search);
-      return params.get('slug') || '';
+      return params.get("slug") || "";
     }
 
     function normalizeTitle(value) {
-      return (value || '').trim();
+      return (value || "").trim();
     }
 
     function escapeHtml(value) {
-      return (value || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/\"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+      return (value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
     function parseSimpleFrontmatter(text) {
       const match = text.match(/^---\s*\n([\s\S]*?)\n---\s*([\s\S]*)$/);
       if (!match) {
-        throw new Error('O ficheiro não contém frontmatter YAML válido.');
+        throw new Error("O ficheiro não contém frontmatter YAML válido.");
       }
 
       const yamlBlock = match[1];
-      const body = match[2] || '';
       const fields = {};
 
       yamlBlock.split(/\n/).forEach(line => {
         const trimmed = line.trim();
-        if (!trimmed || trimmed.startsWith('#')) return;
+        if (!trimmed || trimmed.startsWith("#")) return;
 
-        const separatorIndex = trimmed.indexOf(':');
+        const separatorIndex = trimmed.indexOf(":");
         if (separatorIndex === -1) return;
 
         const key = trimmed.slice(0, separatorIndex).trim();
@@ -466,44 +454,42 @@
         fields[key] = value;
       });
 
-      return { fields, body };
+      return { fields };
     }
 
     function markdownToHtml(markdown) {
-      const escaped = escapeHtml(markdown || '');
-      const withBold = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      const withItalic = withBold.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      const escaped = escapeHtml(markdown || "");
+      const withBold = escaped.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+      const withItalic = withBold.replace(/\*(.*?)\*/g, "<em>$1</em>");
       const paragraphs = withItalic
         .split(/\n\s*\n/)
-        .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`)
-        .join('');
-      return paragraphs || '<p></p>';
+        .map(paragraph => `<p>${paragraph.replace(/\n/g, "<br>")}</p>`)
+        .join("");
+      return paragraphs || "<p></p>";
     }
 
     function buildPage(data) {
-      const pageContainer = document.getElementById('pageContainer');
-      const titleEl = document.getElementById('testTitle');
-      const areaEl = document.getElementById('testArea');
-      const breadcrumbsEl = document.getElementById('breadcrumbs');
+      const pageContainer = document.getElementById("pageContainer");
+      const titleEl = document.getElementById("testTitle");
+      const areaEl = document.getElementById("testArea");
+      const breadcrumbsEl = document.getElementById("breadcrumbs");
 
       const title = normalizeTitle(data.title);
-      const area = data.area || 'Área não definida';
-      const descricao = data.descricao_clinica || '';
-      const indicacao = data.indicacao || '';
-      const amostra = data.tipo_amostra || '';
-      const metodo = data.metodo || '';
-      const tat = data.tempo_resposta || '';
-      const observacoes = data.observacoes || '';
+      const area = data.area || "Área não definida";
+      const descricao = data.descricao_clinica || "";
+      const indicacao = data.indicacao || "";
+      const amostra = data.amostra || "";
+      const materialColheita = data.material_colheita || "";
+      const metodo = data.metodo || "";
+      const transporteEstabilidade = data.transporte_estabilidade || "";
+      const tat = data.tempo_resposta || "";
+      const setor = data.setor || "";
+      const observacoes = data.observacoes || "";
 
       document.title = `${title} — Manual de Colheitas`;
-      titleEl.textContent = title || 'Teste sem título';
+      titleEl.textContent = title || "Teste sem título";
       areaEl.textContent = area;
-      breadcrumbsEl.innerHTML = `<a href="/">Início</a> &gt; <a href="/catalogo.html">Testes</a> &gt; <span>${escapeHtml(title)}</span>`;
-
-      pageContainer.innerHTML = `
-        <div class="layout">
-          <article class="main-card">
-            <section class="section-block">
+      breadcrumbsEl.innerHTML = `<a hreflock">
               <h2 class="section-heading">Descrição clínica</h2>
               <div class="section-text">${markdownToHtml(descricao)}</div>
             </section>
@@ -511,6 +497,11 @@
             <section class="section-block">
               <h2 class="section-heading">Indicação / quando solicitar</h2>
               <div class="section-text">${markdownToHtml(indicacao)}</div>
+            </section>
+
+            <section class="section-block">
+              <h2 class="section-heading">Transporte / Estabilidade</h2>
+              <div class="section-text">${markdownToHtml(transporteEstabilidade)}</div>
             </section>
 
             <section class="section-block">
@@ -523,8 +514,12 @@
             <h2 class="section-heading">Informação técnica</h2>
             <ul class="tech-list">
               <li>
-                <span class="tech-label">Tipo de amostra</span>
+                <span class="tech-label">Amostra</span>
                 <span class="tech-value">${escapeHtml(amostra)}</span>
+              </li>
+              <li>
+                <span class="tech-label">Material de colheita</span>
+                <span class="tech-value">${escapeHtml(materialColheita)}</span>
               </li>
               <li>
                 <span class="tech-label">Método</span>
@@ -534,6 +529,10 @@
                 <span class="tech-label">Tempo de resposta</span>
                 <span class="tech-value">${escapeHtml(tat)}</span>
               </li>
+              <li>
+                <span class="tech-label">Setor</span>
+                <span class="tech-value">${escapeHtml(setor)}</span>
+              </li>
             </ul>
           </aside>
         </div>
@@ -541,29 +540,26 @@
         <div class="nav-card" style="margin-top:24px;">
           <h2 class="section-heading">Navegação de apoio</h2>
           <div class="nav-links">
-            <a class="btn-secondary" href="/catalogo.html">Voltar ao catálogo A–Z</a>
-            <a class="btn-secondary" href="/catalogo.html?area=${encodeURIComponent(area)}">Ver testes da mesma área</a>
-          </div>
+            <a class="btn-secondary" href="/catalogo.html        <a class="btn-secondary" href="/catalogo.html?area=${encodeURIComponent(area)}        </div>
         </div>
       `;
     }
 
     function showError(message) {
-      const pageContainer = document.getElementById('pageContainer');
-      const titleEl = document.getElementById('testTitle');
-      const areaEl = document.getElementById('testArea');
+      const pageContainer = document.getElementById("pageContainer");
+      const titleEl = document.getElementById("testTitle");
+      const areaEl = document.getElementById("testArea");
 
-      document.title = 'Teste não encontrado — Manual de Colheitas';
-      titleEl.textContent = 'Teste não encontrado';
-      areaEl.textContent = 'Erro';
+      document.title = "Teste não encontrado — Manual de Colheitas";
+      titleEl.textContent = "Teste não encontrado";
+      areaEl.textContent = "Erro";
 
       pageContainer.innerHTML = `
         <div class="message-card">
           <h2>Não foi possível apresentar este teste</h2>
           <p>${escapeHtml(message)}</p>
           <div class="nav-links" style="justify-content:center; margin-top:18px;">
-            <a class="btn-secondary" href="/catalogo.html">Voltar ao catálogo</a>
-          </div>
+            <a class="btn-secondary" href="/catalogo.html  </div>
         </div>
       `;
     }
@@ -579,9 +575,9 @@
       const fileUrl = `/content/testes/${encodeURIComponent(slug)}.md`;
 
       try {
-        const response = await fetch(fileUrl, { cache: 'no-store' });
+        const response = await fetch(fileUrl, { cache: "no-store" });
         if (!response.ok) {
-          throw new Error('O ficheiro do teste não foi encontrado.');
+          throw new Error("O ficheiro do teste não foi encontrado.");
         }
 
         const text = await response.text();
@@ -589,7 +585,7 @@
         buildPage(parsed.fields);
       } catch (error) {
         console.error(error);
-        showError(error.message || 'Ocorreu um erro inesperado ao carregar o teste.');
+        showError(error.message || "Ocorreu um erro inesperado ao carregar o teste.");
       }
     }
 
