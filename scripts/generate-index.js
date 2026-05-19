@@ -5,15 +5,15 @@ const TESTES_DIR = path.join(__dirname, '../content/testes');
 const OUTPUT_FILE = path.join(TESTES_DIR, 'index.json');
 
 function parseFrontmatter(content) {
-  const match = content.match(/---\s*\n([\s\S]*?)\n---/);
-  if (!match) {
-    console.log("Sem frontmatter válido");
-    return {};
-  }
+  const start = content.indexOf('---');
+  if (start === -1) return {};
 
-  const yaml = match[1];
+  const end = content.indexOf('---', start + 3);
+  if (end === -1) return {};
+
+  const yaml = content.substring(start + 3, end).trim();
+
   const fields = {};
-
   let currentKey = null;
   let isMultiline = false;
 
