@@ -489,60 +489,60 @@
       document.title = `${title} — Manual de Colheitas`;
       titleEl.textContent = title || "Teste sem título";
       areaEl.textContent = area;
-      breadcrumbsEl.innerHTML = `<a hreflock">
-              <h2 class="section-heading">Descrição clínica</h2>
-              <div class="section-text">${markdownToHtml(descricao)}</div>
-            </section>
+breadcrumbsEl.innerHTML = `
+  <a href="/">Início</a> &gt;
+  <a href="/catalogo.html">Testes</a> &gt;
+  <span>${escapeHtml(title)}</span>
+`;
 
-            <section class="section-block">
-              <h2 class="section-heading">Indicação / quando solicitar</h2>
-              <div class="section-text">${markdownToHtml(indicacao)}</div>
-            </section>
+pageContainer.innerHTML = `
+  <div class="layout">
+    
+    <article class="main-card">
 
-            <section class="section-block">
-              <h2 class="section-heading">Transporte / Estabilidade</h2>
-              <div class="section-text">${markdownToHtml(transporteEstabilidade)}</div>
-            </section>
+      <section class="section-block">
+        <h2 class="section-heading">Descrição clínica</h2>
+        <div class="section-text">${markdownToHtml(descricao)}</div>
+      </section>
 
-            <section class="section-block">
-              <h2 class="section-heading">Observações importantes</h2>
-              <div class="section-text">${markdownToHtml(observacoes)}</div>
-            </section>
-          </article>
+      <section class="section-block">
+        <h2 class="section-heading">Indicação / quando solicitar</h2>
+        <div class="section-text">${markdownToHtml(indicacao)}</div>
+      </section>
 
-          <aside class="side-card" aria-label="Informação técnica do teste">
-            <h2 class="section-heading">Informação técnica</h2>
-            <ul class="tech-list">
-              <li>
-                <span class="tech-label">Amostra</span>
-                <span class="tech-value">${escapeHtml(amostra)}</span>
-              </li>
-              <li>
-                <span class="tech-label">Material de colheita</span>
-                <span class="tech-value">${escapeHtml(materialColheita)}</span>
-              </li>
-              <li>
-                <span class="tech-label">Método</span>
-                <span class="tech-value">${escapeHtml(metodo)}</span>
-              </li>
-              <li>
-                <span class="tech-label">Tempo de resposta</span>
-                <span class="tech-value">${escapeHtml(tat)}</span>
-              </li>
-              <li>
-                <span class="tech-label">Setor</span>
-                <span class="tech-value">${escapeHtml(setor)}</span>
-              </li>
-            </ul>
-          </aside>
-        </div>
+      <section class="section-block">
+        <h2 class="section-heading">Transporte / Estabilidade</h2>
+        <div class="section-text">${markdownToHtml(transporteEstabilidade)}</div>
+      </section>
 
-        <div class="nav-card" style="margin-top:24px;">
-          <h2 class="section-heading">Navegação de apoio</h2>
-          <div class="nav-links">
-            <a class="btn-secondary" href="/catalogo.html        <a class="btn-secondary" href="/catalogo.html?area=${encodeURIComponent(area)}        </div>
-        </div>
-      `;
+      <section class="section-block">
+        <h2 class="section-heading">Observações importantes</h2>
+        <div class="section-text">${markdownToHtml(observacoes)}</div>
+      </section>
+
+    </article>
+
+    <aside class="side-card">
+      <h2 class="section-heading">Informação técnica</h2>
+      <ul class="tech-list">
+        <li><span class="tech-label">Amostra</span><span class="tech-value">${escapeHtml(amostra)}</span></li>
+        <li><span class="tech-label">Material de colheita</span><span class="tech-value">${escapeHtml(materialColheita)}</span></li>
+        <li><span class="tech-label">Método</span><span class="tech-value">${escapeHtml(metodo)}</span></li>
+        <li><span class="tech-label">Tempo de resposta</span><span class="tech-value">${escapeHtml(tat)}</span></li>
+        <li><span class="tech-label">Setor</span><span class="tech-value">${escapeHtml(setor)}</span></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <div class="nav-card" style="margin-top:24px;">
+    <h2 class="section-heading">Navegação</h2>
+    <div class="nav-links">
+      <a class="btn-secondary" href="/catalogo.html">Voltar ao catálogo</a>
+      <a class="btn-secondary" href="/catalogo.html?area=${encodeURIComponent(area)}">Ver área</a>
+    </div>
+  </div>
+ `;
     }
 
     function showError(message) {
