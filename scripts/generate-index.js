@@ -15,11 +15,25 @@ function getAllTestes() {
 
       return {
         slug: file.replace('.json', ''),
-        nome: content.nome || '',
+
+        title: content.title || '',
         area: content.area || '',
-        descricao: content.descricao || ''
+
+        metodo: content.metodo || '',
+        amostra: content.amostra || '',
+        material_colheita: content.material_colheita || '',
+        descricao_clinica: content.descricao_clinica || '',
+        transporte_estabilidade: content.transporte_estabilidade || '',
+        tempo_resposta: content.tempo_resposta || '',
+        setor: content.setor || '',
+        observacoes: content.observacoes || ''
       };
     });
+
+  // ✅ ordenar por área + título (coerência global do site)
+  testes.sort((a, b) => {
+    return a.area.localeCompare(b.area) || a.title.localeCompare(b.title);
+  });
 
   return testes;
 }
@@ -32,4 +46,4 @@ fs.writeFileSync(
   'utf-8'
 );
 
-console.log('index.json gerado com sucesso');
+console.log(`index.json gerado com ${data.length} testes`);
