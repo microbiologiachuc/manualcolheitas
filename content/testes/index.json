@@ -1,17 +1,1 @@
-[
-  {
-    "slug": "hemograma",
-    "title": "Hemograma",
-    "area": "Hematologia"
-  },
-  {
-    "slug": "hemocultura",
-    "title": "Hemocultura",
-    "area": "Microbiologia"
-  },
-  {
-    "slug": "proteina-c-reativa",
-    "title": "Proteína C Reativa",
-    "area": "Química Clínica"
-  }
-]
+[]
