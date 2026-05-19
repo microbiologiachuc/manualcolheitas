@@ -11,9 +11,24 @@ function parseFrontmatter(content) {
   const yaml = match[1];
   const fields = {};
 
+  let currentKey = null;
+  let isMultiline = false;
+
   yaml.split('\n').forEach(line => {
     const trimmed = line.trim();
+
+    // ignorar vazio
     if (!trimmed) return;
+
+    // multiline (YAML |)
+    if (isMultiline) {
+      if (line.startsWith(' ') || line.startsWith('\t')) {
+        fields[currentKey] += '\n' + trimmed;
+        return;
+      } else {
+        isMultiline = false;
+      }
+    }
 
     const idx = trimmed.indexOf(':');
     if (idx === -1) return;
@@ -21,7 +36,15 @@ function parseFrontmatter(content) {
     const key = trimmed.slice(0, idx).trim();
     let value = trimmed.slice(idx + 1).trim();
 
-    // remover quotes se existirem
+    // multiline begin
+    if (value === '|') {
+      fields[key] = '';
+      currentKey = key;
+      isMultiline = true;
+      return;
+    }
+
+    // remover aspas
     if (
       (value.startsWith('"') && value.endsWith('"')) ||
       (value.startsWith("'") && value.endsWith("'"))
